@@ -1,6 +1,9 @@
 site_name: Djapy
 repo_url: https://github.com/Bishwas-py/djapy.git
 theme:
+  favicon: images/favicon.png
+  logo: images/logo.png
+
   name: material
   features:
     - navigation.tabs
@@ -50,6 +53,8 @@ extra:
       link: https://github.com/bishwas-py/djapy
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/djapy
+    - icon: fontawesome/solid/w
+      link: https://webmatrices.com
 
 copyright: |
   &copy; 2023 <a href="https://github.com/bishwas-py/djapy" target="_blank" rel="noopener" title="Djapy">Djapy</a>, MIT License
