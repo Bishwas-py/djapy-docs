@@ -1,10 +1,8 @@
 site_name: Djapy
 repo_url: https://github.com/Bishwas-py/djapy.git
-tags:
-  og:type: website
 theme:
-  favicon: images/favicon.png
-  logo: images/logo.png
+  favicon: images/icons/faviconGreen.svg
+  logo: images/icons/logo.svg
   custom_dir: overrides
 
   name: material
