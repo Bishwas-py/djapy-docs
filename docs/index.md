@@ -33,4 +33,4 @@ To create a new project, run the following command:
 django-admin startproject <project_name>
 ```
 
-More on this in the [Getting Started](getting-started.md) section.
+More on this in the [usage](usage.md) section.

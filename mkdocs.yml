@@ -1,8 +1,9 @@
-site_name: Djapy
+site_name: Djapy documentation
 repo_url: https://github.com/Bishwas-py/djapy.git
+repo_name: Bishwas-py/djapy
 theme:
   favicon: images/icons/faviconGreen.svg
-  logo: images/icons/logo.svg
+  logo: images/icons/djapyLogo.svg
   custom_dir: overrides
 
   name: material
@@ -58,7 +59,7 @@ extra:
       link: https://webmatrices.com
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/bishwas-py/djapy" target="_blank" rel="noopener" title="Djapy">Djapy</a>, MIT License
+  &copy; 2024 <a href="https://github.com/bishwas-py/djapy" target="_blank" rel="noopener" title="Djapy">Djapy</a>, MIT License
 
 nav:
   - Introduction: index.md
