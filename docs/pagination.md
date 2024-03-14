@@ -97,7 +97,7 @@ and the `ordering`.
 }
 ```
 
-### Response fields:
+### Response fields
 
 - `items` (List): The list of items in the current page.
 - `cursor` (int): The primary key of the last object in the current page.
