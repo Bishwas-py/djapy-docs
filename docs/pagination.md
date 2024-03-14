@@ -53,7 +53,22 @@ def todo_list(request, **kwargs) -> List[Todo]:
     return Todo.objects.all()
 ```
 
-> `cursor` is the primary key of the last object in the previous page.
+### Parameters
+
+Here are the parameters you can use with the cursor pagination:
+
+- `cursor` (int): The primary key of the last object in the previous page.
+- `limit` (int): The number of items to return in the response.
+- `ordering` (str): The ordering of the items in the response. It can be `asc` or `desc`.
+- `has_next` (bool): Whether there are more items in the next page.
+
+### Response fields
+
+- `items` (List): The list of items in the current page.
+- `cursor` (int): The primary key of the last object in the current page.
+- `limit` (int): The number of items in the current page.
+- `ordering` (str): The ordering of the items in the current page.
+- `has_next` (bool): Whether there are more items in the next page.
 
 ### Sample Request
 
@@ -96,23 +111,6 @@ and the `ordering`.
   "has_next": true
 }
 ```
-
-### Response fields
-
-- `items` (List): The list of items in the current page.
-- `cursor` (int): The primary key of the last object in the current page.
-- `limit` (int): The number of items in the current page.
-- `ordering` (str): The ordering of the items in the current page.
-- `has_next` (bool): Whether there are more items in the next page.
-
-### Parameters
-
-Here are the parameters you can use with the cursor pagination:
-
-- `cursor` (int): The primary key of the last object in the previous page.
-- `limit` (int): The number of items to return in the response.
-- `ordering` (str): The ordering of the items in the response. It can be `asc` or `desc`.
-- `has_next` (bool): Whether there are more items in the next page.
 
 ## Extending Base Pagination
 
