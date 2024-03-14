@@ -55,6 +55,51 @@ def todo_list(request, **kwargs) -> List[Todo]:
 
 > `cursor` is the primary key of the last object in the previous page.
 
+### Sample Request
+
+You can pass the following query parameters to the endpoint to get the paginated response:
+
+```http
+GET /todos/all?limit=1&ordering=asc
+```
+
+also, with the `cursor` param:
+
+```http
+GET /todos/all?cursor=1&limit=1&ordering=asc
+```
+
+### Sample Response
+
+```json
+{
+  "items": [
+    {
+      "id": 0,
+      "title": "string",
+      "description": "string",
+      "completed_at": "2024-03-14T03:37:19.015Z",
+      "will_be_completed_at": "2024-03-14T03:37:19.015Z",
+      "created_at": "2024-03-14T03:37:19.015Z",
+      "updated_at": "2024-03-14T03:37:19.015Z"
+    }
+  ],
+  "cursor": 0,
+  "limit": 0,
+  "ordering": "asc",
+  "has_next": true
+}
+```
+
+### Parameters
+
+Here are the parameters you can use with the cursor pagination:
+
+- `cursor` (int): The primary key of the last object in the previous page.
+- `limit` (int): The number of items to return in the response.
+- `ordering` (str): The ordering of the items in the response. It can be `asc` or `desc`.
+- `has_next` (bool): Whether there are more items in the next page.
+
 ## Extending Base Pagination
 
 You can extend the base pagination mechanism to create your own custom pagination mechanism.

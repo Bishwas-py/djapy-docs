@@ -1,5 +1,5 @@
 site_name: Djapy documentation
-repo_url: https://github.com/Bishwas-py/djapy.git
+repo_url: https://github.com/Bishwas-py/djapy
 repo_name: Bishwas-py/djapy
 theme:
   favicon: images/icons/faviconGreen.svg
