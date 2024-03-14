@@ -59,15 +59,21 @@ def todo_list(request, **kwargs) -> List[Todo]:
 
 You can pass the following query parameters to the endpoint to get the paginated response:
 
-```http
-GET /todos/all?limit=1&ordering=asc
-```
-
-also, with the `cursor` param:
+#### with the `cursor` param:
 
 ```http
 GET /todos/all?cursor=1&limit=1&ordering=asc
 ```
+
+#### without the `cursor` param:
+
+```http
+GET /todos/all?limit=1&ordering=asc
+```
+
+Without the `cursor` param, the first page will be selected by default, and
+a list of items will be returned depending on the `limit`,
+and the `ordering`.
 
 ### Sample Response
 
@@ -90,6 +96,14 @@ GET /todos/all?cursor=1&limit=1&ordering=asc
   "has_next": true
 }
 ```
+
+Response fields:
+
+- `items` (List): The list of items in the current page.
+- `cursor` (int): The primary key of the last object in the current page.
+- `limit` (int): The number of items in the current page.
+- `ordering` (str): The ordering of the items in the current page.
+- `has_next` (bool): Whether there are more items in the next page.
 
 ### Parameters
 
