@@ -74,13 +74,13 @@ Here are the parameters you can use with the cursor pagination:
 
 You can pass the following query parameters to the endpoint to get the paginated response:
 
-#### with the `cursor` param:
+#### with the `cursor` param
 
 ```http
 GET /todos/all?cursor=1&limit=1&ordering=asc
 ```
 
-#### without the `cursor` param:
+#### without the `cursor` param
 
 ```http
 GET /todos/all?limit=1&ordering=asc
