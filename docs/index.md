@@ -1,7 +1,8 @@
 # Introduction
 
 This is the documentation for the `Djapy` library, which is designed to let you make RESTful APIs
-within Django with as no boilerplate, using plain Python and Django, with the supremacy of Pydantic.
+within Django with as no boilerplate, using plain Python and [Django](https://www.djangoproject.com/),
+with the supremacy of [Pydantic](https://docs.pydantic.dev/latest/).
 
 Djapy is molded according to `Django`'s philosophy of "batteries included", and is designed to
 be as simple as possible to use, while still being powerful enough to handle most use cases.
