@@ -67,4 +67,5 @@ nav:
   - Swagger: swagger.md
   - Authentication: auth.md
   - Pagination: pagination.md
+  - Handle Response: response.md
   - Credits: credits.md
