@@ -61,9 +61,12 @@ copyright: |
 
 nav:
   - Introduction: index.md
-  - Usage: usage.md
+  - Usage:
+      - Basic usage: usage/index.md
+      - Request: usage/request.md
+      - Response: usage/response.md
+      - Error handling: usage/error-handling.md
   - Swagger: swagger.md
   - Authentication: auth.md
   - Pagination: pagination.md
-  - Handle Response: response.md
   - Credits: credits.md

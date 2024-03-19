@@ -2,6 +2,60 @@ Handling response is one of the most important part of any API-based application
 responses
 Pydatic's validators and computed fields.
 
+## Response
+
+The response is automatically serialized to JSON using the Pydantic model.
+
+```python
+# schemas.py
+from djapy import Schema
+
+
+class UserSchema(Schema):  # or TypedDict
+    username: str
+    email: str
+
+
+# views.py
+@djapify
+def get_user(request, username: str) -> {200: UserSchema, 404: str}:
+    user = User.objects.get(username=username)
+    return user
+
+
+# urls.py
+urlpatterns = [
+    path('get-user/', views.get_user, name='get-user'),
+]
+```
+
+- The response will be serialized to JSON using the `UserSchema` model, if not valid, pydantic error will be raised.
+- If the response is a valid instance of the model, it will be serialized to JSON and returned with a 200 status code.
+- If the response is a string, it will be returned with a 200 status code.
+
+#### Invalid error response
+
+```json
+{
+  "error": [
+    {
+      "type": "missing",
+      "loc": [
+        "response",
+        "message"
+      ],
+      "msg": "Field required",
+      "input": {
+        "error": "You are not allowed to create a user"
+      },
+      "url": "https://errors.pydantic.dev/2.6/v/missing"
+    }
+  ],
+  "error_count": 1,
+  "title": "output"
+}
+```
+
 ## Computed field
 
 Pydantic's `@computed_field` decorator is used to define a computed field in a schema. It is used to define a field that
