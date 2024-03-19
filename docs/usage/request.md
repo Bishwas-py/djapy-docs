@@ -136,3 +136,29 @@ def check_site_exists(request, url: payload(HttpUrl), check_all_pages: payload(b
 
 Now, you can use the `url` and `check_all_pages` as data input. The `url` will be validated as a `HttpUrl`
 and `check_all_pages` will be validated as a `bool`.
+
+### How to use `constr()` as data input?
+
+You can use `constr()` to validate a string, according to the constraints provided.
+Visit [Pydantic's constr](https://docs.pydantic.dev/latest/api/types/#pydantic.types.constr) for more information.
+
+```python
+from pydantic import constr
+
+
+@djapify
+def search_game_by_name(request, name: constr(min_length=3, max_length=50)) -> {200: GameSchema, 404: str}:
+    game = Game.objects.get(name__icontains=name)
+    return game
+```
+
+- We set the minimum length of the `name` to 3 and the maximum length to 50. Validation will be done accordingly.
+
+The similar goes for `conint()`, `confloat()`, or any other `con*` Constraints.
+
+If in schema:
+
+```python
+class GameSchema(Schema):
+    name: constr(min_length=3, max_length=50)
+```
