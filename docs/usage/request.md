@@ -134,6 +134,17 @@ def check_site_exists(request, url: payload(HttpUrl), check_all_pages: payload(b
         return False
 ```
 
+**HTTP Request:**
+
+```http
+POST /check-site-exists/ HTTP/1.1
+Content-Type: application/json
+{
+  "url": "https://www.google.com",
+  "check_all_pages": true
+}
+```
+
 Now, you can use the `url` and `check_all_pages` as data input. The `url` will be validated as a `HttpUrl`
 and `check_all_pages` will be validated as a `bool`.
 
