@@ -8,10 +8,8 @@ theme:
 
   name: material
   features:
-    - navigation.tabs
-    - navigation.sections
+    - navigation.expand
     - toc.integrate
-    - navigation.top
     - search.suggest
     - search.highlight
     - content.tabs.link
