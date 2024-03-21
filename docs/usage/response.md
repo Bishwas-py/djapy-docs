@@ -68,7 +68,6 @@ class PostSchema(Schema):
     body: str
 
     @computed_field
-    @property
     def plain_text_body(self) -> str:
         return strip_tags(self.body)
 ```
