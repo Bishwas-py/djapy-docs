@@ -133,3 +133,18 @@ class PostSchema(Schema):
                             strip=False)
 ```
 
+## How-to
+
+### How to return one Schema for multiple status codes?
+
+You can return one schema for multiple status codes by using the `uni_schema(` function.
+
+```python
+@djapify
+def confirm_email(request, confirmation_token: str) -> uni_schema(MessageOut, {200, 400, 422}):
+    # ... your code
+    return {...}  # mapped with MessageOut
+```
+
+You can also use `uni_schema.success_2xx(YourSchema)`, `uni_schema.error_4xx(YourSchema)`
+or `uni_schema.error_5xx(YourSchema)`.
