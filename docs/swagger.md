@@ -3,9 +3,12 @@
 Well, djapy, one of the finest piece of software I've ever written, has a swagger documentation.
 It is flawless, it is perfect, it is beautiful.
 
+!!! Dark-Mode
+    Our swagger documentation supports dark mode. It's beautiful, it's perfect, it's flawless.
+
 Here's how it looks like:
 
-![Djapy Swagger Support](swagger_screenshot.png)
+![Djapy Swagger Support](images/swagger.png)
 
 And here's how you can use it:
 
