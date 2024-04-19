@@ -8,8 +8,8 @@ for everyone involved.
 
 ## Getting Started
 
-1. **Create a django project**: Create a new Django project and install djapy.
-2. **Clone the repository**: Clone your forked djapy repository inside your Django project.
+1. **Create a django project**: Create a new Django project; `django-admin startproject my_project`.
+2. **Clone the repository**: Clone your forked djapy repository inside your Django project. Structure it as shown below.
 3. **Virtual Environment**: Create a virtual environment and install the dependencies.
 4. **Run the server**: Run the Django server and start developing your feature.
 5. **Development**: Develop your feature or fix the bug.
@@ -21,7 +21,7 @@ Structure:
 ```properties
 my_project/
 _ ├── my_project/
-_ ├── djapy/
+_ ├── djapy/ # cloned-repo
 _ ├── manage.py
 ```
 
