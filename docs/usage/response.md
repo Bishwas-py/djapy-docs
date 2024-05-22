@@ -77,7 +77,7 @@ class PostSchema(Schema):
 You can access the context in the computed field using the `context` parameter.
 
 ```python
-from djapy.schema import SourceAble, Schema
+from djapy.schema import Schema, Outsource
 
 
 class LikeDataDict(TypedDict):
@@ -86,29 +86,29 @@ class LikeDataDict(TypedDict):
     last_like: DetailedLikeSchema | None
 
 
-class SimpleLikeSchema(Schema, SourceAble):
+class SimpleLikeSchema(Schema, Outsource):
     # ... other fields
 
     @computed_field
     def likes(self) -> LikeDataDict:
-        likes = PolymorphicLike.get_object_likes(self._source_obj).alive()
+        likes = PolymorphicLike.get_object_likes(self._obj).alive()
         return {
             'like_count': likes.count(),
-            'have_self': likes.filter(user=self._context['request'].user).exists() if self._context[
+            'have_self': likes.filter(user=self._ctx['request'].user).exists() if self._ctx[
                 'request'].user.is_authenticated else False,
             'last_like': likes.last() if likes.exists() else None,
         }
 ```
 
-> `SourceAble` is a mixin that provides `_source_obj` and `_context` attributes to the schema. It also provides a
-> `_validation_info` as `ValidationInfo` object.
+> `Outsource` is a mixin that provides `_obj` and `_ctx` attributes to the schema. It also provides a
+> `_info` as `ValidationInfo` object.
 
 ### Accessing source object in computed field
 
-You can access the source object in the computed field using the `_source_obj` attribute. In the above
-example, `PolymorphicLike.get_object_likes(self._source_obj)` is used to get the likes of the source object.
+You can access the source object in the computed field using the `_obj` attribute. In the above
+example, `PolymorphicLike.get_object_likes(self._obj)` is used to get the likes of the source object.
 
-Basically, `_source_obj` is the object that is being serialized, generally a Django model instance.
+Basically, `_obj` is the object that is being serialized, generally a Django model instance.
 
 ## Validators
 

@@ -2,8 +2,12 @@ Djapy simplifies the process of handling request data and query parameters in yo
 
 ## Data Input
 
-You can use `Schema` or `TypedDict` to define the request data schema. `Schema` is recommended, but feel free to play
+You can use `Schema`, `Form` or `TypedDict` to define the request data schema. `Schema` is recommended, but feel free to play
 around.
+
+- `Schema` only accepts JSON data, with the `Content-Type: application/json` header.
+- `Form` only accepts form data, with the `Content-Type: application/x-www-form-urlencoded` header.
+- `TypedDict` only accepts JSON data, with the `Content-Type: application/json` header.
 
 !!! warning
 
@@ -76,10 +80,11 @@ These are the list of allowed query parameter types `[basic parameters]`:
 - `bool`
 - `datetime`
 - `constr()` or `conint()` or `confloat()` or `condecimal()`
+- Iterable types: `list`, `tuple`, `set`; `list[int]`, `tuple[str]`, etc.
 
-> If anything other than these types are used, it will be considered as a data input.
+> If anything other than these types are used, it will be considered as a data (payload) input.
 
-> Like: `list[str]`, `dict[str, int]`, etc.
+> Like: `Schema` or `TypedDict`;
 
 ### Invalid request error response
 
@@ -173,3 +178,4 @@ If in schema:
 class GameSchema(Schema):
     name: constr(min_length=3, max_length=50)
 ```
+
