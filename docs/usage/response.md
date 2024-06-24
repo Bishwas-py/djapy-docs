@@ -150,7 +150,7 @@ or `uni_schema.error_5xx(YourSchema)`.
 
 ### How to return a list of items or QuerySet?
 
-While retuning many to many relationships or a django queryset, you can use `QueryList` type.
+While retuning many-to-many relationships or a django queryset, you can use `QueryList` type.
 
 ```python
 from djapy.schema import QueryList
@@ -161,3 +161,19 @@ def get_users(request) -> QueryList[TodoSchema]:
     todos = Todo.objects.all()  # or filter() # or user.todos_set.all()
     return todos
 ```
+
+
+### How to return a image field?
+
+You can use `ImageField` type to return image fields.
+
+```python
+from djapy.schema.schema import ImageUrl
+
+
+class UserSchema(Schema):
+    username: str
+    email: str
+    profile_pic: ImageUrl
+```
+
