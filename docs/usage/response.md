@@ -147,3 +147,17 @@ def confirm_email(request, confirmation_token: str) -> uni_schema(MessageOut, {2
 
 You can also use `uni_schema.success_2xx(YourSchema)`, `uni_schema.error_4xx(YourSchema)`
 or `uni_schema.error_5xx(YourSchema)`.
+
+### How to return a list of items or QuerySet?
+
+While retuning many to many relationships or a django queryset, you can use `QueryList` type.
+
+```python
+from djapy.schema import QueryList
+
+
+@djapify
+def get_users(request) -> QueryList[TodoSchema]:
+    todos = Todo.objects.all()  # or filter() # or user.todos_set.all()
+    return todos
+```
