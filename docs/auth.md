@@ -11,7 +11,7 @@ Session authentication is the default authentication mechanism for Django, and D
 To use session authentication, you need to import `SessionAuth` from `djapy.auth` and utilize it in your views.
 
 ```python
-from djapy import SessionAuth
+from djapy import SessionAuth, djapy_auth
 
 
 @djapy_auth(SessionAuth, permissions=['plans.todos.can_view'])
@@ -19,12 +19,30 @@ def todo_list(request):
     ...
 ```
 
+or
+
+```python
+from djapy import SessionAuth, djapify
+
+
+@djapify(auth=SessionAuth)  # or SessionAuth(permissions=['plans.todos.can_view'])
+def todo_list(request):
+    ...
+```
+
+### Auth all over the views
+
 or if you wanna assign authentication to the all endpoints in your `views.py` file, you can use `AUTH_MECHANISM`
 variable.
 
 ```python
-AUTH_MECHANISM = SessionAuth(permissions=['plans.todos.can_view'])
-# or just SessionAuth
+"""
+after assigning AUTH_MECHANISM, it automatically assigns the authentication to all the endpoints in the current views file.
+Only use this if you want to assign the same authentication mechanism to all the endpoints in the views file.
+
+If you want to assign different authentication mechanisms to different endpoints, use the @djapy_auth decorator.
+"""
+AUTH_MECHANISM = SessionAuth(permissions=['plans.todos.can_view'])  # or just SessionAuth; initializations are optional
 ```
 
 ## Extending Base Authentication
