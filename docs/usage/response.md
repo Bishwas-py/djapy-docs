@@ -108,7 +108,7 @@ class SimpleLikeSchema(Schema, Outsource):
 You can access the source object in the computed field using the `_obj` attribute. In the above
 example, `PolymorphicLike.get_object_likes(self._obj)` is used to get the likes of the source object.
 
-Basically, `_obj` is the object that is being serialized, generally a Django model instance.
+Basically, `_obj` is the source object that is being serialized, generally a Django model instance.
 
 ## Validators
 
@@ -126,10 +126,12 @@ class PostSchema(Schema):
     @field_validator('body', mode='before')
     def assign_body(cls, body):
         linkified_body = bleach.linkify(body, callbacks=[set_nofollow, set_target])
-        return bleach.clean(linkified_body,
-                            tags=BLEACH_ALLOWED_TAGS,
-                            attributes=BLEACH_ALLOWED_ATTRIBUTES,
-                            strip=False)
+        return bleach.clean(
+            linkified_body,
+            tags=BLEACH_ALLOWED_TAGS,
+            attributes=BLEACH_ALLOWED_ATTRIBUTES,
+            strip=False
+        )
 ```
 
 ## How-to
