@@ -46,7 +46,7 @@ def todo_list(request):
     ...
 ```
 
-Also, you can assign tags specifically using `@djapigy` decorator.
+Also, you can assign tags specifically using `@djapify` decorator.
 
 ```python
 from djapy import djapify
