@@ -55,6 +55,9 @@ extra:
       link: https://pypi.org/project/djapy
     - icon: fontawesome/solid/w
       link: https://webmatrices.com
+  analytics:
+    provider: google
+    property: G-015VS976FT
 
 copyright: |
   &copy; 2024 <a href="https://github.com/bishwas-py/djapy" target="_blank" rel="noopener" title="Djapy">Djapy</a>, MIT License
