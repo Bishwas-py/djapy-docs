@@ -153,3 +153,16 @@ class CursorPagination(BasePagination):  # example
                 "has_next": has_next,
             }
 ```
+
+## How to?
+
+### How to implement async with pagination?
+
+Pagination is similar! No changes required, i.e.:
+
+```python
+@async_djapify
+@paginate(CursorPagination)
+async def get_paginated_items(request, **kwargs) -> List[ItemSchema]:
+    return await Item.objects.aall()
+```

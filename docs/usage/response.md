@@ -179,3 +179,18 @@ class UserSchema(Schema):
     profile_pic: ImageUrl
 ```
 
+### Is response in async views and sync views any different?
+Not much, both async and sync views have pretty much the same structure.
+
+```python
+@async_djapify
+async def get_user_profile(request, username: str) -> {200: ProfileSchema, 404: MessageOut}:
+    try:
+        user = await User.objects.aget(username=username)
+        return user  # Same familiar response pattern, just async!
+    except User.DoesNotExist:
+        return 404, {
+            'message': 'User not found',
+            'alias': 'user_not_found'
+        }
+```

@@ -74,5 +74,14 @@ class CustomAuth(BaseAuthMechanism):
         return {}  # Your custom app schema here to be used in the swagger documentation
 ```
 
+## How to?
 
+### How to implement async with auth?
 
+It's pretty much the same, you do it the same way you do it in `sync`.
+
+```python
+@async_djapify(auth=SessionAuth)
+async def get_protected_data(request) -> DataSchema:
+  ...
+```
