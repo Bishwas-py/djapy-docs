@@ -1,49 +1,53 @@
 # Introduction
 
-Djapy is a library that allows you to create RESTful APIs within [Django](https://www.djangoproject.com) with no boilerplate, using plain Python and
-[Pydantic](https://docs.pydantic.dev/latest). It is designed to be simple, easy to use, and fast.
+Djapy is a modern Python framework that enables you to create RESTful APIs within [Django](https://www.djangoproject.com) with zero boilerplate, using pure Python and [Pydantic](https://docs.pydantic.dev/latest). It's designed to be simple, fast, and powerful.
 
-Djapy is molded according to `Django`'s philosophy of "batteries included", and is designed to
-be as simple as possible to use, while still being powerful enough to handle most use cases.
+Djapy embraces Django's "batteries included" philosophy while introducing modern API development patterns that make your code cleaner and more maintainable.
 
 ```python
 @djapify
-def get_user(request) -> {200: UserSchema, 404: str}:
-    return request.user
+def get_user(request, username: str) -> UserSchema:
+    return User.objects.get(username=username)
+
+# Want asynchronous?
+@async_djapify
+async def get_user(request, username: str) -> UserSchema:
+    return await User.objects.aget(username=username)
 ```
 
-> It's that simple!
+> It's that simple! Both sync and async support out of the box.
 
 ## Features
 
-- **IO type checking**: Pydantic-based, and swagger integrated
-- **Easy to use**: No boilerplate, just plain Python
-- **Delicious Syntax**: Simple and easy to understand
-- **Fast**: Built on top of Django, and Pydantic, and is designed to be fast
-- **Extensible**: Customizable, and can be used with any Django project
-- **Pagination**: CursorPagination, OffsetLimitPagination and PageNumber out of the box; with ability to create custom
-  pagination
-- **Error handling**: Customizable error handling, and error messages; validation errors/messages can be customized
-- **Django friendly**: Based on Django's structure, architecture and
-- **Auth**: Built-in support for Django's authentication and authorization; with ability to create custom authentication
-  and authorization
+- **Zero Boilerplate**: Build APIs with pure Python - no serializers, viewsets, or extra configuration needed
+- **Type Safety**: Full Python type hints with Pydantic validation
+- **Async Support**: Write high-performance async views with `async_djapify`
+- **Modern Auth**: Simple session auth with customizable mechanisms
+- **Smart Validation**: Built-in request/response validation using Pydantic
+- **Auto Documentation**: OpenAPI/Swagger integration with dark mode support
+- **Django Native**: Seamlessly works with Django's decorators and features
+- **Flexible Pagination**: Built-in cursor, offset-limit, and page number pagination
+- **Error Handling**: Customizable error handling and validation messages
+- **IDE Friendly**: Full intellisense and type checking support
 
 ## Installation
 
-Djapy is available on PyPI, and can be installed with `pip`:
+Djapy requires Python 3.10+ and is available on PyPI:
 
 ```bash
 pip install djapy
-or
-pip install git+https://github.com/Bishwas-py/djapy.git@main # for the latest version
+# or for latest development version
+pip install git+https://github.com/Bishwas-py/djapy.git@main
 ```
 
 ## Creating a new project
 
-To create a new project, run the following command:
+For your quick start:
 
 ```bash
-django-admin startproject <project_name>
+django-admin startproject myproject
+cd myproject
+pip install djapy
 ```
 
-More on this in the [usage](usage.md) section.
+Now you're ready to create your first Djapy endpoint! See the [usage guide](usage) for more details.
